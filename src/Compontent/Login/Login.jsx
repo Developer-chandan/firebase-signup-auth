@@ -1,7 +1,7 @@
 import { GithubAuthProvider, GoogleAuthProvider, getAuth, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import app from "../../Firebase/firebase.config";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+
 
 
 
@@ -22,19 +22,16 @@ const Login = () => {
 
     signInWithPopup(auth, googleProvider)
       .then((result) => {
-
-        // The signed-in user info.
         const user = result.user;
-        console.log(user)
-        {
-          if (user) {
-            setSuccess('Register Successfully')
-          } else {
-            setError('Already have a user')
-          }
+        if (user) {
+          setSuccess('Register Successfully')
+        } else {
+          setError('Already have a user')
         }
-        // ...
-      }).catch((error) => {
+
+
+      })
+      .catch((error) => {
 
         console.log(error)
         setError(error);
@@ -73,14 +70,14 @@ const Login = () => {
     const auth = getAuth();
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        // Signed in 
-       
-          const user = userCredential.user;
-          console.log(user);
-          setSuccess('login Successfull')
-        
-      
-        
+
+
+        const user = userCredential.user;
+        console.log(user);
+        setSuccess('login Successfull')
+
+
+
       })
       .catch((error) => {
         setError("User dosen't exist")
@@ -88,19 +85,6 @@ const Login = () => {
         console.log('login: ', errorMessage)
       });
   }
-
-
-  // const handleSignOut = () => {
-  //   signOut(auth).then(() => {
-
-  //   }).catch((error) => {
-  //     // An error happened.
-  //   });
-  // }
-
-
-
-
 
 
   return (
