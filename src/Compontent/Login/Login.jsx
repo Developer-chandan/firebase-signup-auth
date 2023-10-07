@@ -134,7 +134,7 @@ const Login = () => {
           </button>
           <div>
             <p className="text-green-500">{success}</p>
-            <p className="text-red-500">{error}</p>
+            <p className="text-red-400">{error}</p>
           </div>
         </form>
         <div className="mt-4">
